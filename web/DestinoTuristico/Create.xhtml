@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        
+        <p:layout fullPage="true">
+
+            <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" style="text-align: center; display: flex; align-items: center; font-size: 40px;">
+                SISTEMA DE GESTION DE RESERVA DE PAQUETES TURISTICOS
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="100" resizable="true" closable="true" collapsible="true">
+                Footer
+            </p:layoutUnit>
+
+            <p:layoutUnit position="west" size="230" header="Menú" resizable="true" collapsible="true">
+                <h:form>
+                <p:menu>
+                     <p:submenu label="Cliente">
+                        <p:menuitem value="Mantenimiento" outcome="/Cliente/indexCliente" />
+                         </p:submenu>
+                          <p:submenu label="Alojamiento">
+                        <p:menuitem value="Mantenimiento" outcome="/Alojamiento/indexAlojamiento"/>
+                         </p:submenu>
+                         <p:submenu label="Actividad Turistica">
+                        <p:menuitem value="Mantenimiento" outcome="/ActividadTuristica/IndexActividadTuristica"/>
+                         </p:submenu>
+                         <p:submenu label="Destino Turistico">
+                        <p:menuitem value="Mantenimiento" outcome="/DestinoTuristico/IndexDestinoTuristico"/>
+                         </p:submenu>
+                         <p:submenu label="Reserva">
+                        <p:menuitem value="Mantenimiento" />
+                         </p:submenu>
+                         <p:submenu label="Usuarios">
+                        <p:menuitem value="Mantenimiento" outcome="/Usuarios/IndexUsuarios"/>
+                    </p:submenu>
+                </p:menu>
+                    </h:form>
+            </p:layoutUnit>
+            
+            <p:layoutUnit position="center" size="100" resizable="true" closable="true" collapsible="true">
+             <h:form>
+                <p:panel header="Agregar Destino Turistico">
+                    <p:panelGrid columns="1" layout="grid">
+                        <p:outputLabel for="DestinoTuristico-title" value="Nombre:"/>
+                        <p:inputText id="DestinoTuristico-title" value="#{destinoTuristicoBean.destinoTuristico.nombre}"/>
+                        <p:outputLabel for="DestinoTuristico-descripcion" value="Descripcion:"/>
+                        <p:inputText id="DestinoTuristico-descripcion" value="#{destinoTuristicoBean.destinoTuristico.descripcion}"/>
+                        
+                    </p:panelGrid>
+                        <h:outputText value="&#10;" escape="false" style="white-space: pre;"/> <!-- Salto de línea -->
+                        <p:commandButton value="Agregar" action="#{destinoTuristicoBean.create()}" ajax="false"/>
+                        <p:linkButton value="Cancelar" href="IndexDestinoTuristico.xhtml"/>
+                </p:panel>
+            </h:form>
+             </p:layoutUnit>
+           </p:layout>
+  </h:body>
+</html>
+
+

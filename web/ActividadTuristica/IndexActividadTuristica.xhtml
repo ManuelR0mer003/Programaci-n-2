@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+         <p:layout fullPage="true">
+
+            <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" style="text-align: center; display: flex; align-items: center; font-size: 40px;">
+                SISTEMA DE GESTION DE RESERVA DE PAQUETES TURISTICOS
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="100" resizable="true" closable="true" collapsible="true">
+                Footer
+            </p:layoutUnit>
+
+            <p:layoutUnit position="west" size="230" header="Menú" resizable="true" collapsible="true">
+                
+                <h:form>
+                <p:menu>
+                    <p:submenu label="Cliente">
+                        <p:menuitem value="Mantenimiento" outcome="/Cliente/indexCliente" />
+                         </p:submenu>
+                          <p:submenu label="Alojamiento">
+                        <p:menuitem value="Mantenimiento" outcome="/Alojamiento/indexAlojamiento"/>
+                         </p:submenu>
+                         <p:submenu label="Actividad Turistica">
+                        <p:menuitem value="Mantenimiento" outcome="/ActividadTuristica/IndexActividadTuristica"/>
+                         </p:submenu>
+                         <p:submenu label="Destino Turistico">
+                        <p:menuitem value="Mantenimiento" outcome="/DestinoTuristico/IndexDestinoTuristico"/>
+                         </p:submenu>
+                         <p:submenu label="Reserva">
+                        <p:menuitem value="Mantenimiento" />
+                         </p:submenu>
+                         <p:submenu label="Usuarios">
+                        <p:menuitem value="Mantenimiento" outcome="/Usuarios/IndexUsuarios"/>
+                    </p:submenu>
+                </p:menu>
+                      </h:form>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center" size="100" resizable="true" closable="true" collapsible="true">
+                Proyecto Programacion III
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center" size="100" resizable="true" closable="true" collapsible="true">
+
+                <p:linkButton value="Agregar Actividad Turistica" href="Create.xhtml"/>
+                              <br /><br />
+                              <p:growl id ="growl"/>
+                              Detalle de registros guardados:
+                              <p:dataTable var="actividadTuristica" value="#{actividadTuristicaBean.actividadesTuristicas}" paginator="true" rows="5">
+                                  <p:column style="text-align: center; width: 5%;">
+                                      <f:facet name="header">
+                                          <h:outputText value="Id"/>
+                                      </f:facet>
+                                      <h:outputText value="#{actividadTuristica.actividadTuristicaId}"/>
+                                  </p:column>
+                                  <p:column style="text-align: center; width: 30%;">
+                                      <f:facet name="header">
+                                          <h:outputText value="Nombre de Actividad Turistica"/>
+                                      </f:facet>
+                                      <h:outputText value="#{actividadTuristica.nombreActividad}"/>
+                                  </p:column>
+                                   <p:column style="text-align: center; width: 30%;">
+                                      <f:facet name="header">
+                                          <h:outputText value="Descripción"/>
+                                      </f:facet>
+                                       <h:outputText value="#{actividadTuristica.descripcion}"/>
+                                  </p:column>
+                                  <p:column style="text-align: center; width: 15%;">
+                                      <f:facet name="header">
+                                          <h:outputText value="Precio ($)"/>
+                                      </f:facet>
+                                      <h:outputText value="#{actividadTuristica.precio}"/>
+                                  </p:column>
+                                  <p:column style="text-align: center; width: 20%;">
+                                  <f:facet  name="header">
+                                       <h:outputText value="Acciones"/>
+                                  </f:facet>
+                                  <p:linkButton value="Editar" outcome="Edit">
+                                      <f:param name="actividadTuristica_id" value="#{actividadTuristica.actividadTuristicaId}"/>
+                                  </p:linkButton>
+                                  <p:linkButton value="Eliminar" outcome="Delete">
+                                      <f:param name="actividadTuristica_id" value="#{actividadTuristica.actividadTuristicaId}"/>
+                                  </p:linkButton>
+                                  </p:column>
+                              </p:dataTable>
+            </p:layoutUnit>
+
+        </p:layout>
+    </h:body>
+</html>

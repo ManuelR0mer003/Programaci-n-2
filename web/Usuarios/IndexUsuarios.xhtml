@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+         <p:layout fullPage="true">
+
+            <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" style="text-align: center; display: flex; align-items: center; font-size: 40px;">
+                SISTEMA DE GESTION DE RESERVA DE PAQUETES TURISTICOS
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="100" resizable="true" closable="true" collapsible="true">
+                Footer
+            </p:layoutUnit>
+
+            <p:layoutUnit position="west" size="230" header="Menú" resizable="true" collapsible="true">
+                <h:form>
+                <p:menu>
+                    <p:submenu label="Cliente">
+                        <p:menuitem value="Mantenimiento" outcome="/Cliente/indexCliente" />
+                         </p:submenu>
+                          <p:submenu label="Alojamiento">
+                        <p:menuitem value="Mantenimiento" outcome="/Alojamiento/indexAlojamiento"/>
+                         </p:submenu>
+                         <p:submenu label="Actividad Turistica">
+                        <p:menuitem value="Mantenimiento" outcome="/ActividadTuristica/IndexActividadTuristica"/>
+                         </p:submenu>
+                         <p:submenu label="Destino Turistico">
+                        <p:menuitem value="Mantenimiento" outcome="/DestinoTuristico/IndexDestinoTuristico"/>
+                         </p:submenu>
+                         <p:submenu label="Reserva">
+                        <p:menuitem value="Mantenimiento" outcome="/Reserva/IndexReserva"/>
+                         </p:submenu>
+                         <p:submenu label="Usuarios">
+                             <p:menuitem value="Mantenimiento" outcome="/Usuarios/IndexUsuarios"/>
+                    </p:submenu>
+                </p:menu>
+                      </h:form>
+            </p:layoutUnit>
+             
+               <p:layoutUnit position="center" size="100" resizable="true" closable="true" collapsible="true">
+                Proyecto Programacion III
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center" size="100" resizable="true" closable="true" collapsible="true">
+
+                <p:linkButton value="Agregar Usuario" href="Create.xhtml"/>
+                              <br /><br />
+                              <p:growl id ="growl"/>
+                              Detalle de registros guardados:
+                              <p:dataTable var="Usuarios" value="#{usuariosBean.usuarioAdministrador}" paginator="true" rows="5">
+                                  <p:column style="text-align: center; width: 10%;">
+                                      <f:facet name="header">
+                                          <h:outputText value="Id"/>
+                                      </f:facet>
+                                      <h:outputText value="#{Usuarios.usuarioId}"/>
+                                  </p:column>
+                                  <p:column style="text-align: center; width: 35%;">
+                                      <f:facet name="header">
+                                          <h:outputText value="Usuario:"/>
+                                      </f:facet>
+                                      <h:outputText value="#{Usuarios.usuario}"/>
+                                  </p:column>
+                                   <p:column style="text-align: center; width: 35%;">
+                                      <f:facet name="header">
+                                          <h:outputText value="Contraseña"/>
+                                      </f:facet>
+                                       <h:outputText value="#{Usuarios.contrasenia}"/>
+                                  </p:column>
+                                  <p:column style="text-align: center; width: 20%;">
+                                  <f:facet  name="header">
+                                       <h:outputText value="Acciones"/>
+                                  </f:facet>
+                                  <p:linkButton value="Editar" outcome="Edit">
+                                      <f:param name="usuario_id" value="#{Usuarios.usuarioId}"/>
+                                  </p:linkButton>
+                                  <p:linkButton value="Eliminar" outcome="Delete">
+                                      <f:param name="usuario_id" value="#{Usuarios.usuarioId}"/>
+                                  </p:linkButton>
+                                  </p:column>
+                              </p:dataTable>
+            </p:layoutUnit>
+
+        </p:layout>
+             
+             </h:body>
+    
+</html>

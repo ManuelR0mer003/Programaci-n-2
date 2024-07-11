@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+         <p:layout fullPage="true">
+
+            <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" style="text-align: center; display: flex; align-items: center; font-size: 40px;">
+                SISTEMA DE GESTION DE RESERVA DE PAQUETES TURISTICOS
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="100" resizable="true" closable="true" collapsible="true">
+                Footer
+            </p:layoutUnit>
+
+            <p:layoutUnit position="west" size="230" header="Menú" resizable="true" collapsible="true">
+                <h:form>
+                <p:menu>
+                    <p:submenu label="Cliente">
+                        <p:menuitem value="Mantenimiento" outcome="/Cliente/indexCliente" />
+                         </p:submenu>
+                          <p:submenu label="Alojamiento">
+                        <p:menuitem value="Mantenimiento" outcome="/Alojamiento/indexAlojamiento"/>
+                         </p:submenu>
+                         <p:submenu label="Actividad Turistica">
+                        <p:menuitem value="Mantenimiento" outcome="/ActividadTuristica/IndexActividadTuristica"/>
+                         </p:submenu>
+                         <p:submenu label="Destino Turistico">
+                        <p:menuitem value="Mantenimiento" outcome="/DestinoTuristico/IndexDestinoTuristico"/>
+                         </p:submenu>
+                         <p:submenu label="Reserva">
+                        <p:menuitem value="Mantenimiento" />
+                         </p:submenu>
+                         <p:submenu label="Usuarios">
+                        <p:menuitem value="Mantenimiento" outcome="/Usuarios/IndexUsuarios"/>
+                    </p:submenu>
+                </p:menu>
+                      </h:form>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center" size="100" resizable="true" closable="true" collapsible="true">
+                Proyecto Programacion III
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center" size="100" resizable="true" closable="true" collapsible="true">
+
+                <p:linkButton value="Agregar Cliente" href="Create.xhtml"/>
+                              <br /><br />
+                              <p:growl id ="growl"/>
+                              Detalle de registros guardados:
+                              <p:dataTable var="Cliente" value="#{clienteBean.clientes}" paginator="true" rows="7">
+                                  <p:column style="text-align: center; width: 5%;">
+                                      <f:facet name="header">
+                                          <h:outputText value="Id"/>
+                                      </f:facet>
+                                      <h:outputText value="#{Cliente.clienteId}"/>
+                                  </p:column>
+                                  <p:column style="text-align: center; width: 15%;">
+                                      <f:facet name="header">
+                                          <h:outputText value="Nombre"/>
+                                      </f:facet>
+                                      <h:outputText value="#{Cliente.nombres}"/>
+                                  </p:column>
+                                   <p:column style="text-align: center; width: 15%;">
+                                      <f:facet name="header">
+                                          <h:outputText value="Apellidos"/>
+                                      </f:facet>
+                                       <h:outputText value="#{Cliente.apellidos}"/>
+                                  </p:column>
+                                  <p:column style="text-align: center; width: 10%;">
+                                      <f:facet name="header">
+                                          <h:outputText value="Identificación (Dui)"/>
+                                      </f:facet>
+                                      <h:outputText value="#{Cliente.identificacion}"/>
+                                  </p:column>
+                                   <p:column style="text-align: center; width: 15%;">
+                                      <f:facet name="header">
+                                          <h:outputText value="Correo"/>
+                                      </f:facet>
+                                       <h:outputText value="#{Cliente.correoElectronico}"/>
+                                  </p:column>
+                                   <p:column style="text-align: center; width: 10%;">
+                                      <f:facet name="header">
+                                          <h:outputText value="Numero telefonico"/>
+                                      </f:facet>
+                                       <h:outputText value="#{Cliente.numeroTelefonico}"/>
+                                  </p:column>
+                                  <p:column style="text-align: center; width: 20%;">
+                                  <f:facet  name="header">
+                                       <h:outputText value="Acciones"/>
+                                  </f:facet>
+                                  <p:linkButton value="Editar" outcome="Edit">
+                                      <f:param name="cliente_id" value="#{Cliente.clienteId}"/>
+                                  </p:linkButton>
+                                  <p:linkButton value="Eliminar" outcome="Delete">
+                                      <f:param name="cliente_id" value="#{Cliente.clienteId}"/>
+                                  </p:linkButton>
+                                  </p:column>
+                              </p:dataTable>
+            </p:layoutUnit>
+
+        </p:layout>
+    </h:body>
+</html>
+
